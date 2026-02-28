@@ -1,0 +1,364 @@
+*{margin:0;padding:0;box-sizing:border-box}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins, sans-serif;
+  color: white;
+
+  /* Animated Gradient */
+  background: linear-gradient(
+    360deg,
+    #290c0c,
+    #302b63,
+    #f90202,
+    #4c6ee9
+  );
+
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+/* ================= ANIMATIONS ================= */
+
+/* Moving Background */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subtle Glow Effect */
+body::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(0, 245, 255, 0.2);
+  filter: blur(150px);
+  top: 20%;
+  left: 30%;
+  animation: floatingGlow 6s infinite alternate;
+  z-index: -1;
+}
+
+/* Floating Glow Movement */
+@keyframes floatingGlow {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(60px);
+  }
+}
+
+/* Smooth Fade In When Page Loads */
+body {
+  animation: fadeInPage 1s ease-in-out;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+body.light{
+background:#f4f4f4;
+color:black;
+}
+
+.container{
+width:100%;
+max-width:750px;
+height:100vh;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(25px);
+border-radius:25px;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+padding:18px;
+text-align:center;
+font-family:Orbitron;
+background:rgba(0,0,0,0.4);
+position:relative;
+}
+
+.topButtons{
+position:absolute;
+right:20px;
+top:10px;
+display:flex;
+gap:10px;
+cursor:pointer;
+font-size:11px;
+color:#00f5ff;
+}
+
+/* ================= CHAT ================= */
+
+#chat{
+flex:1;
+padding:15px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:12px;
+scroll-behavior:smooth;
+}
+
+.msg{
+padding:10px;
+border-radius:15px;
+max-width:80%;
+word-break:break-word;
+animation:fade 0.3s ease;
+}
+
+/* USER MESSAGE */
+
+.user{
+align-self:flex-end;
+background:linear-gradient(135deg,#00f5ff,#7f00ff);
+}
+
+/* BOT MESSAGE WITH ANIMATION */
+
+.bot {
+  align-self: flex-start;
+
+  background: rgba(0,255,255,0.12);
+  border: 1px solid rgba(0,255,255,0.4);
+  white-space: pre-wrap;
+
+  padding: 12px 15px;
+  border-radius: 18px;
+
+  /* Smooth Entrance */
+  animation: botAppear 0.6s ease forwards;
+
+  /* Smooth Text Effect */
+  transform-origin: left;
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 15px rgba(0,255,255,0.2);
+}
+
+/* 🔥 Bot Fade + Slide Animation */
+@keyframes botAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ✨ Subtle Glow Pulse */
+.bot {
+  animation: botAppear 0.6s ease forwards,
+             botGlow 3s infinite alternate;
+}
+
+@keyframes botGlow {
+  from {
+    box-shadow: 0 0 10px rgba(0,255,255,0.2);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0,255,255,0.6);
+  }
+}
+
+/* ================= TYPING ANIMATION (AI ANSWER EFFECT) ================= */
+
+.typing {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  align-items: center;
+}
+
+/* 🔵 Typing Dots */
+.typing span {
+  width: 10px;
+  height: 10px;
+  background: #00f5ff;
+  border-radius: 50%;
+
+  animation: typingBounce 1.4s infinite ease-in-out;
+  box-shadow: 0 0 10px rgba(0,245,255,0.6);
+}
+
+/* Delay for wave effect */
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* ✨ Smooth Bounce + Pulse */
+@keyframes typingBounce {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.4;
+  }
+
+  25% {
+    transform: translateY(-6px) scale(1.1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.4;
+  }
+}
+
+
+/* ================= INPUT ================= */
+
+.inputArea{
+display:flex;
+gap:8px;
+padding:10px;
+background:rgba(0,0,0,0.4);
+flex-wrap:wrap;
+}
+
+input{
+flex:1;
+padding:10px;
+border:none;
+border-radius:20px;
+outline:none;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg,#00f5ff,#7f00ff,#00f5ff);
+  background-size: 200% 200%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+
+  /* Smooth Gradient Animation */
+  animation: gradientShift 4s ease infinite;
+}
+
+/* 🔥 Hover Effect */
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 20px rgba(0,245,255,0.7),
+              0 0 40px rgba(127,0,255,0.5);
+}
+
+/* 💥 Click Effect */
+button:active {
+  transform: scale(0.95);
+}
+
+/* ✨ Animated Gradient Movement */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 🌟 Ripple Effect on Click */
+button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+}
+
+/* ================= SUGGESTIONS ================= */
+
+.suggestions{
+display:flex;
+gap:6px;
+flex-wrap:wrap;
+padding:8px;
+}
+
+.suggestions div{
+background:rgba(0,255,255,0.2);
+padding:5px 10px;
+border-radius:15px;
+font-size:12px;
+cursor:pointer;
+}
+
+/* ================= LOGIN BOX ================= */
+
+.loginBox{
+position:absolute;
+background:#111;
+padding:30px;
+border-radius:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+box-shadow:0 0 25px rgba(0,255,255,0.4);
+}
+
+/* ================= FADE ANIMATION ================= */
+
+@keyframes fade{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
+}

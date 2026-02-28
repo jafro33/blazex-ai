@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𐌁𐌋𐌀Ɀ𐌄𐋄 𐌀𐌉</title>
+
+<!-- ✅ WEBSITE ICON (FAVICON) -->
+<link rel="icon" type="image/png" href="logo.png">
+
+<!-- ✅ FONT AWESOME ICONS -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ✅ GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div id="login" class="loginBox" >
+<h2 style="font-family:Orbitron">
+<i class="fa-solid fa-brain"></i> 𐌁𐌋𐌀Ɀ𐌄𐋄 𐌀𐌉
+</h2>
+
+<input id="username" placeholder="Enter Username">
+
+<button onclick="login()">
+<i class="fa-solid fa-right-to-bracket"></i> Enter
+</button>
+</div>
+
+<!-- ================= APP ================= -->
+<div class="container" id="app" style="display:none">
+
+<header>
+<i class="fa-solid fa-robot"></i>𐌁𐌋𐌀Ɀ𐌄𐋄  𐌀𐌉
+
+<div class="topButtons">
+
+<div onclick="clearChat()">
+<i class="fa-solid fa-trash"></i>
+<span>Clear</span>
+</div>
+
+<div onclick="toggleTheme()">
+<i class="fa-solid fa-moon"></i>
+<span>Theme</span>
+</div>
+
+<div onclick="downloadChat()">
+<i class="fa-solid fa-download"></i>
+<span>Download</span>
+</div>
+
+<div onclick="logout()">
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Logout</span>
+</div>
+
+</div>
+</header>
+
+<div id="chat"></div>
+
+<!-- ================= SUGGESTIONS ================= -->
+<div class="suggestions">
+<div onclick="fill('Explain AI')">
+<i class="fa-solid fa-lightbulb"></i> Explain AI
+</div>
+
+<div onclick="fill('Business idea')">
+<i class="fa-solid fa-briefcase"></i> Business Idea
+</div>
+
+<div onclick="fill('Website tips')">
+<i class="fa-solid fa-code"></i> Website Tips
+</div>
+</div>
+
+<!-- ================= INPUT AREA ================= -->
+<div class="inputArea">
+
+<input id="userInput"
+placeholder="Ask anything..."
+onkeydown="if(event.key==='Enter') sendMessage()">
+
+<button onclick="startVoice()">
+<i class="fa-solid fa-microphone"></i>
+</button>
+
+<button onclick="generateImage()">
+<i class="fa-solid fa-image"></i>
+</button>
+
+<input type="file" id="fileUpload" hidden onchange="readFile(event)">
+
+<button onclick="document.getElementById('fileUpload').click()">
+<i class="fa-solid fa-folder"></i>
+</button>
+
+<button onclick="sendMessage()">
+<i class="fa-solid fa-paper-plane"></i> Send
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
